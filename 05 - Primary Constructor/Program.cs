@@ -1,36 +1,28 @@
-using System;
-
-namespace PrimaryConstructorExample
+// Without primary constructor
+public class Client
 {
-    // Exemplo usando record types com primary constructor (disponível em versões mais recentes do C#)
+    public string Name { get; }
+    public int Age { get; }
 
-
-    // Without primary constructor
-    public class Client
+    public Client(string name, int age)
     {
-        public string Name { get; }
-        public int Age { get; }
-
-        public Client(string name, int age)
-        {
-            Name = name;
-            Age = age;
-        }
+        Name = name;
+        Age = age;
     }
+}
 
-    // With primary constructor (C# 12+)
-    public class Person(string Name, int Age)
-    {
-        public string Name { get; } = Name;
-        public int Age { get; } = Age;
-    }
+// With primary constructor (C# 12+)
+public class Person(string Name, int Age)
+{
+    public string Name { get; } = Name;
+    public int Age { get; } = Age;
+}
 
-    class Program
+class Program
+{
+    static void Main()
     {
-        static void Main()
-        {
-            Person person = new("Alice", 30);
-            Console.WriteLine($"Name: {person.Name}, Age: {person.Age}");
-        }
+        Person person = new("Alice", 30);
+        Console.WriteLine($"Name: {person.Name}, Age: {person.Age}");
     }
 }
