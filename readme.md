@@ -40,9 +40,9 @@ This repository contains various C# code examples demonstrating modern C# featur
    - Using the null-coalescing operator
    - Null handling patterns
 
-10. Serialization with Inheritance
-    - [With JsonPolymorphic](10%20-%20Serializacao%20com%20Heranca/With%20JsonPolymorphic/Program.cs)
-    - [Without JsonPolymorphic](10%20-%20Serializacao%20com%20Heranca/Without%20JsonPolymorphic/Program.cs)
+10. Polymorphic Serialization
+    - [With JsonPolymorphic](10%20-%20Serializacao%20Polimorfica/With%20JsonPolymorphic/Program.cs)
+    - [Without JsonPolymorphic](10%20-%20Serializacao%20Polimorfica/Without%20JsonPolymorphic/Program.cs)
 
 ## Requirements
 
