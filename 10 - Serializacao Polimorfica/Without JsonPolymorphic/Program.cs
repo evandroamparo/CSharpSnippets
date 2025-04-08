@@ -1,5 +1,10 @@
 using System.Text.Json;
 
+// O exemplo abaixo mostra como usar a serialização baseada em herança
+// Uma propriedade EventType é adicionada à classe base Event para identificar o tipo de evento.
+// O exemplo mostra como serializar e desserializar objetos 
+//de classes derivadas de uma classe base usando JsonSerializer.
+
 namespace SerializationInheritanceExample
 {
     public class Event
@@ -34,6 +39,8 @@ namespace SerializationInheritanceExample
             };
 
             var options = new JsonSerializerOptions { WriteIndented = true };
+            // É importante que os eventos sejam serializados como object porque 
+            // o JsonSerializer não consegue serializar diretamente a classe base Event.
             string json = JsonSerializer.Serialize((object)eventMessage, options);
             Console.WriteLine("Serialized event:");
             Console.WriteLine(json);
@@ -53,10 +60,9 @@ namespace SerializationInheritanceExample
                     ProcessError(JsonSerializer.Deserialize<ErrorEvent>(json));
                     break;
                 default:
-                    PocessUnknownEvent(deserialized);
+                    ProcessUnknownEvent(deserialized);
                     break;
-            }
-            ;
+            };
         }
 
         private static void ProcessLogin(LoginEvent typedEvent)
@@ -71,7 +77,7 @@ namespace SerializationInheritanceExample
             // Event type: Error, ErrorMessage = An error occurred.
         }
 
-        private static void PocessUnknownEvent(Event? @event)
+        private static void ProcessUnknownEvent(Event? @event)
         {
             Console.WriteLine($"Event type: unknown, EventType = {@event?.EventType}");
             // Event type: unknown, EventType = ?

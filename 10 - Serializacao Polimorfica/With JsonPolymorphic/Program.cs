@@ -1,6 +1,13 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+// O exemplo abaixo mostra como usar a serialização polimórfica com JsonSerializer
+// para serializar e desserializar objetos de classes derivadas de uma classe base.
+// A classe base Event tem duas classes derivadas: LoginEvent e ErrorEvent.
+// A serialização polimórfica permite que o JsonSerializer saiba qual tipo de classe derivada
+// deve ser usada durante a serialização e desserialização, usando os atributos JsonPolymorphic
+// e JsonDerivedType
+
 namespace SerializationInheritanceExample
 {
     [JsonPolymorphic(TypeDiscriminatorPropertyName = "$baseType")]
@@ -9,7 +16,6 @@ namespace SerializationInheritanceExample
     public class Event
     {
         public DateTime Timestamp { get; set; }
-        public string Source { get; set; }
     }
 
     public class LoginEvent : Event
@@ -29,7 +35,6 @@ namespace SerializationInheritanceExample
             Event eventMessage = new LoginEvent
             {
                 Timestamp = DateTime.Now,
-                Source = "App",
                 User = "Alice"
             };
 
@@ -42,7 +47,6 @@ namespace SerializationInheritanceExample
             //    "$baseType": "login",
             //    "User": "Alice",
             //    "Timestamp": "2025-04-06T19:28:00.3229856-03:00",
-            //    "Source": "App"
             // }
 
             Event deserialized = JsonSerializer.Deserialize<Event>(json);
