@@ -2,6 +2,8 @@
 
 This repository contains various C# code examples demonstrating modern C# features and best practices.
 
+[Menos código, mais resultado: 10 técnicas em C# para código mais rápido e elegante](https://blog.evandroamparo.com/2025/06/19/menos-codigo-mais-resultado-10-tecnicas-em-c-para-codigo-mais-rapido-e-elegante/)
+
 ## Examples
 
 1. [Switch vs Dictionaries](01%20-%20Switch%20vs%20Dictionaries/Program.cs)
